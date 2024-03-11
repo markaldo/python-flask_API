@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Landing Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+<style>
+
+body
+{
+  font-family: Helvetica, sans serif;
+  background-image: url('static/img/hair4.jpeg');
+  -webkit-background-size: cover;
+  background-repeat: none;
+  min-height: 800px;
+  background-size: 100% 100%;
+}
+header
+{
+	border-bottom: solid white 2px;
+	padding: 0 10px 4px 10px;
+}
+.top
+{
+	width: 90%;
+	margin: auto;
+	overflow: hidden;
+}
+header h1
+{
+	float: left;
+	margin: 0 0 0 0;
+	font-size: 55px;
+	color: #2CDACF; 
+}
+header li
+{
+	float: right;
+	display: inline;
+	padding: 0 20px 0 20px;
+	margin-bottom: 10px;
+}
+header a
+{
+	color: #000000;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 16px;
+	transform: skewY(10deg);
+}
+ header .highlight, header .current a{
+ 	color:#2CDACF  ;
+ 	font-weight:bold;
+ 	
+ }
+aside
+{
+	float: right;
+	width: 30%;
+	margin-top: 10px;
+}
+aside#side .quote input, aside#side .quote textarea
+{
+	width:80%;
+	padding: 5px;
+}
+.dark
+{
+	padding: 20px;
+	background: #2CDACF;
+	color: #ffffff;
+	margin: 25px 0 10px 40px;
+}
+.issue
+{
+	float:left;
+	width:65%;
+	padding: 140px 0 0 0;
+}
+.adv
+{
+	color: black;
+	text-align: center;
+
+}
+.upgrade h3
+{
+	float: left;
+}
+.upgrade form
+{
+	float: right;
+	margin-top: 15px;
+}
+.upgrade input[type="email"]
+{
+	padding: 4px;
+	height: 15px;
+	width: 250px;
+}
+.adv p
+{
+	color: #696969;
+}
+footer
+{
+	display: block;
+}
+.upgrade h3
+{
+	color:black;
+}
+.button_1
+{
+	height: 25px;
+	background: #000000;
+	border: 0;
+	padding-right: 20px;
+	padding-left: 20px;
+	color: #ffffff; 
+}
+.adv a
+{
+   
+    text-decoration: none;
+    text-align: center;
+}
+</style>
+
+</head>
+<body>
+<header>
+	<div class="top">
+    	<div>
+    		<h1>Appointey</h1>
+    	</div>
+    	<nav>
+    		<ul>
+    			<li><a href="/login">Welcome</a></li>
+    			<li><a href="/signin">Services</a></li>
+    			<li class="current"><a href="register.html">Register</a></li>
+    		</ul>
+    	</nav>
+    </div>
+</header>
+	
+	<div class="issue">
+		<div class="adv">
+			<h2>SUPER INTENSIVE HAIRCARE FOR THE WHOLE FAMILY BROUGHT TO YOU BY APPOINTEY SALOON</h2>
+		<p>New affordable unbelieveable package at offer which includes every family member. A 25% discount for June subscribers and an extra service of volumizing hair tretaments.<a href="https://cybaguru.com/services/">Read More</a></p>
+		</div>
+	   </div>
+	
+		 <aside id="side">
+		   <div class="dark">
+			 <h3>You Register Online Now!</h3>
+			 <h5 style="font-family:courier; color: white; font-size: 160%;">Lets set up your Appointey account &#128578;</h5>
+			  <form class="quote" action="/register" method="POST">
+	
+				 <div>
+				   <label>Name</label><br>
+				   <input type="text" name="name" placeholder="Name">
+				 </div>
+	
+				 <div>
+				   <label>Surname</label><br>
+				   <input type="text" name="surname" placeholder="Surname">
+				 </div>
+	
+				  <div>
+					<label>Email</label><br>
+					<input type="text" name="email" placeholder="pangol@gmail.com">
+				  </div>
+				  
+				  <div>
+					<label>Telephone Number</label><br>
+					<input type="tel" name="telephone" placeholder="(+48) 77-001-892">
+				  </div>
+				  <div>
+					<label>Password</label><br>
+					<input type="text" name="password" placeholder="8-characters">
+				  </div>
+				  <br>
+				  <button class="button_1" type="submit">Send</button>
+	
+				</form>
+			  </div>
+			</aside>
+
+<section>
+	<div class="upgrade">
+        <h3>Aleady a member of Appointey? Go for Upgrade!</h3>
+        <form action="/signin" method="POST">
+          <input type="email" placeholder="Enter Email...">
+          <button type="submit" class="button_1">Upgrade</button>
+        </form>
+      </div>
+</section>
+</body>
+
+</html>

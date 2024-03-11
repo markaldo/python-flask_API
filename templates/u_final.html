@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: lightgray;
+        }
+        .details th, .details td, .details tr {
+        border-top: 1px solid rgb(126, 119, 56);
+        border-bottom: 1px solid rgb(126, 119, 56);
+        }
+        .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 20%;
+  margin: 1rem;
+  display: inline-flex;
+ flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: center; 
+}
+.card img {
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.container
+{
+	width: 80%;
+	margin: auto;
+	overflow:hidden;
+}
+     </style>
+</head>
+<body>
+<form action="/u_layout" method="POST">
+    <input type="submit" name="submit" value="xtra-large" style="color: purple"/>
+    <input type="submit" name="submit" value="large" style="color: green;"/>
+    <input type="submit" name="submit" value="medium" style="color: blue"/>
+    <input type="submit" name="submit" value="small" style="color: orange"/>
+    <input type="submit" name="submit" value="list" style="color: blueviolet"/>
+    <input type="submit" name="submit" value="details" style="color: palevioletred;"/>
+    <input type="submit" name="submit" value="default" style="color: blueviolet"/>
+</form> 
+<h5>Crosscheck, is that all?</h5>
+{% if view == 1 %}
+<table>
+    <tr style="width: 1201px; height: 1201px;">
+        {% for row in pic %}
+            <img src="static/ugallery/{{row.picode}}" alt="{{row.picode}}" width="1200" height="1200">
+            <figcaption style="font-weight: bold;">{{row.title}}</figcaption> 
+            <hr>
+        {% endfor %} 
+    </tr>
+</table>
+{% endif %}
+{% if view == 7 %}
+{% for row in pic %}
+    <div class="card">
+        <img src="static/ugallery/{{row.picode}}" alt="" style="width:100%">
+        <div class="container">
+        <details><summary>{{row.title}}</summary>
+        <p>club  {{row.club}}</p> 
+        <p>place {{row.place}}</p>
+        </details>  
+        </div>
+    </div>
+{% endfor %} 
+{% endif %}
+{% if view == 2 %}
+<table>
+    <tr>
+       <th style="text-align:left;">Icon</th>
+       <th style="text-align:left;"></th>
+    </tr>
+    {% for row in pic %}
+    <tr>
+       <td style="width:750px"><img src="static/ugallery/{{row.picode}}" alt="" width="750" height="750">
+       <td>
+        <ol>
+            <li>{{row.title}}</li>
+            <li>{{row.club}}</li>
+            <li>{{row.place}}</li>
+        </ol>   
+       </td>
+    </tr>
+    {% endfor %}
+ </table>
+{% endif %}
+{% if view == 3 %}
+<table style="border: none; border-style: none;">
+        {% for row in pic %}
+        <tr style="width:300px; height: 300px;">
+            <img src="static/ugallery/{{row.picode}}" alt="{{row.picode}}" width="300" height="300">
+            
+        </tr>
+        {% endfor %} 
+</table>
+{% endif %}
+{% if view == 4 %}
+<table>
+    <tr>
+        {% for row in pic %}
+        <td style="width: 100px; height: 70px;">
+            <img src="static/ugallery/{{row.picode}}" alt="{{row.title}}" width="70" height="70">
+            {{row.title}}
+        </td>
+        {% endfor %} 
+    </tr>
+</table>
+{% endif %}
+{% if view == 5 %}
+<ul>
+    {% for row in pic %}
+    <li style="font-size: small;">
+        <img src="static/ugallery/{{row.picode}}" alt="{{row.title}}" width="15" height="15">
+        {{row.title}}
+    </li>
+    {% endfor %} 
+</ul>
+{% endif %}
+
+{% if view == 6 %}
+<table>
+    <tr>
+       <th style="text-align:left;">Icon</th>
+       <th style="text-align:left;">Title</th>
+       <th style="text-align:left;">Club</th>
+       <th style="text-align:left;">Place</th>
+       <th style="text-align:left;">Type</th>
+       <th style="text-align:left;">Date_posted</th>
+    </tr>
+    {% for row in pic %}
+    <tr>
+       <td style="width:150px"><img src="static/ugallery/{{row.picode}}" alt="" width="15" height="15"></td>
+       <td style="width:150px">{{row.title}}</td>
+       <td style="width:150px">{{row.club}}</td>
+       <td style="width:250px">{{row.place}}</td>
+       <td style="width:150px">{{row.mimetype}}</td>
+       <td style="width:290px">{{row.date_posted}}</td>
+    </tr>
+    {% endfor %}
+ </table>
+ {% endif %}
+ </br>
+ <a href = '/u_edit'>edit</a></br>
+ <a href = '/u_logout'>log out</a></b>
+</body>
+</html>

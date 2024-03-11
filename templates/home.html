@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+      {
+        background-image: url('static/uimg/gd.jpg');
+        -webkit-background-size: cover;
+        background-repeat: none;
+      }
+    </style>
+</head>
+<body>
+    <h5 style="font-family:verdana; color: gold; text-align: center; font-size: 250%;">Welcome to CYBAGURU</h5>
+    {% if sim == 4 %}
+       <p>{{masg}}</p>
+    {% endif %}
+    <p style="color: red;">{{ms}}</p>
+    <p><a href="/u_signin">Sign In</a></p>
+ {% if sign == 2 %}
+    <form action = "/u_login" method = "POST">
+        <p>Enter your log in details</p>
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" size="40" placeholder="e.g sluga@hotmail.com"><br>
+    </br>
+        <label for="password">Password</label><br>
+        <input type="password" id="pwd" name="pwd" size="40" placeholder="password"><br>
+    </br>
+        <input type="submit" value="Login" style="color: green;"/>
+        <input type="reset"  value="clear" style="color: red;"/>
+    </form> 
+ {% endif %}
+    <p><a href="/u_signup">Sign Up</a></p>
+    <p><a href="/welcome">Back</a></p>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body{background: url("static/img/ocean.avif");
+       -webkit-background-size: cover;
+        background-repeat: none;
+        color: white;
+        font-size: large;
+        font-style: italic;}
+        table, th, td {
+           border: 1px solid rgb(126, 119, 56);
+        }
+     </style>
+</head>
+<body>
+   <p>MANAGEMENT OPTIONS</p>
+   <form action="/option" method="POST">
+      <input type="submit" name="submit" value="CUSTOMERS" style="color: green;"/>
+      <input type="submit" name="submit" value="EMPLOYEES" style="color: purple"/>
+      <input type="submit" name="submit" value="HISTORY" style="color: blue"/>
+      <input type="submit" name="submit" value="HAIRSTYLES" style="color: maroon"/>
+      <input type="submit" name="submit" value="LOG OUT" style="color: red;"/>
+   </form> 
+{% if view == 1 %}
+<p style="text-align:center">Customer Details</p>
+    <table>
+        <tr>
+           <th style="text-align:left;">ID</th>
+           <th style="text-align:left;">NAME</th>
+           <th style="text-align:left;">SURNAME</th>
+           <th style="text-align:left;">TELEPHONE</th>
+           <th style="text-align:left;">EMAIL</th>
+           <th style="text-align:left;">DATE & TIME CREATED</th>
+        </tr>
+        {% for row in accounts %}
+        <tr>
+           <td style="width:50px">{{row[0]}}</td>
+           <td style="width:250px">{{row[1]}}</td>
+           <td style="width:250px">{{row[2]}}</td>
+           <td style="width:150px">{{row[3]}}</td>
+           <td style="width:300px">{{row[4]}}</td>
+           <td style="width:350px">{{row[5]}}</td>
+        </tr>
+        {% endfor %}
+     </table>
+     <hr>
+     <p><a style="color: orangered;">CAUTION:</a> when implementing changes, insure to enter correct table user id!</p>
+     
+     <form action="/c_buttons" method="POST">
+     <input type="submit" name="submit" value="create" style="color: green;"/>
+     <input type="submit" name="submit" value="update" style="color: blue"/>
+     <input type="submit" name="submit" value="delete" style="color: red;"/>
+     </form> 
+   {% endif %}
+   {% if view == 2 %}
+   <p style="text-align:center">Employees Details</p>
+    <table>
+        <tr>
+           <th style="text-align:left;">ID</th>
+           <th style="text-align:left;">NAME</th>
+           <th style="text-align:left;">SURNAME</th>
+           <th style="text-align:left;">EMAIL</th>
+           <th style="text-align:left;">ADDRESS</th>
+           <th style="text-align:left;">SALOON</th>
+           <th style="text-align:left;">TABLE NUMBER</th>
+           <th style="text-align:left;">TELEPHONE</th>
+        </tr>
+        {% for row in accounts %}
+        <tr>
+           <td style="width:50px">{{row[0]}}</td>
+           <td style="width:150px">{{row[1]}}</td>
+           <td style="width:150px">{{row[2]}}</td>
+           <td style="width:250px">{{row[3]}}</td>
+           <td style="width:150px">{{row[4]}}</td>
+           <td style="width:150px">{{row[5]}}</td>
+           <td style="width:150px">{{row[6]}}</td>
+           <td style="width:150px">{{row[7]}}</td>
+      </tr>
+        {% endfor %}
+     </table>
+     <hr>
+     <p><a style="color: orangered;">CAUTION:</a> when implementing changes, insure to enter correct table user id!</p>
+     
+     <form action="/e_buttons" method="POST">
+     <input type="submit" name="submit" value="create" style="color: blue;"/>
+     <input type="submit" name="submit" value="update" style="color: purple"/>
+     <input type="submit" name="submit" value="delete" style="color: red;"/>
+     </form> 
+   {% endif %}
+   {% if view == 3 %}
+   <p style="text-align:center">Transactions History</p>
+    <table>
+        <tr>
+           <th style="text-align:left;">ID</th>
+           <th style="text-align:left;">EMPLOYEE ID</th>
+           <th style="text-align:left;">CUSTOMER EMAIL</th>
+           <th style="text-align:left;">DATE BOOKED</th>
+           <th style="text-align:left;">IMAGE</th>
+           <th style="text-align:left;">MIMETYPE</th>
+           <th style="text-align:left;">DESIRED STYLE</th>
+           <th style="text-align:left;">DATE POSTED</th>
+        </tr>
+        {% for row in accounts %}
+        <tr>
+           <td style="width:50px">{{row[0]}}</td>
+           <td style="width:50px">{{row[1]}}</td>
+           <td style="width:250px">{{row[2]}}</td>
+           <td style="width:150px">{{row[3]}}</td>
+           <td style="width:150px">{{row[4]}}</td>
+           <td style="width:150px">{{row[5]}}</td>
+           <td style="width:150px">{{row[6]}}</td>
+           <td style="width:250px">{{row[7]}}</td>
+        </tr>
+        {% endfor %}
+     </table>
+   {% endif %}
+{% if view == 4 %}
+<p style="text-align:center">Hairstyle Details</p>
+<form action="/h_buttons" method="POST">
+   <input type="submit" name="submit" value="add" style="color: green;"/>
+   <input type="submit" name="submit" value="append" style="color: blue"/>
+   <input type="submit" name="submit" value="delete" style="color: red;"/>
+</form>
+<hr>
+     <p><a style="color: orangered;">CAUTION:</a> when implementing changes, insure to enter correct table user id!</p>
+<hr>
+    {% if peek == 2 %}
+<form action="/load" method="post" enctype="multipart/form-data">
+   <label for="id">Id for row to be appended</label><br>
+    <input type="text" id="id" name="id"><br>
+   <label for="file">Upload photo</label><br>
+   <input type="file" name="file"/></br>
+    <label for="name">NAME</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="price">PRICE</label><br>
+    <input type="text" id="price" name="price"><br>
+    <input type="submit" name="submit" value="append" style="color: green;"/>
+    <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+</form><br>
+   {% endif %}
+   {% if peek == 3 %}
+   <p>Enter Id of row to be deleted</p>
+   <form action="/load" method="POST">
+         <label for="id">ID</label><br>
+         <input type="text" id="id" name="id"><br>
+         <input type="submit" name="submit" value="delete" style="color: red;"/>
+         <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+      </form><br>
+   {% endif %}
+    <table>
+        <tr>
+           <th style="text-align:left;">ID</th>
+           <th style="text-align:left;">NAME</th>
+           <th style="text-align:left;">CODE_NAME</th>
+           <th style="text-align:left;">PRICE</th>
+           <th style="text-align:left;">DATE ADDED</th>
+        </tr>
+        {% for row in styles %}
+        <tr>
+           <td style="width:50px">{{row[0]}}</td>
+           <td style="width:250px">{{row[1]}}</td>
+           <td style="width:500px">{{row[2]}}</td>
+           <td style="width:150px">PLN  {{row[3]}}</td>
+           <td style="width:300px">{{row[4]}}</td>
+        </tr>
+        {% endfor %}
+     </table>
+   {% endif %}
+
+   {% if show == 2 %}
+   <p>Create Customer New Account</p>
+    <form action="/crud" method="POST">
+        <label for="name">NAME</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="surname">SURNAME</label><br>
+        <input type="text" id="surname" name="surname"><br>
+        <label for="email">EMAIL</label><br>
+        <input type="text" id="email" name="email"><br>
+        <label for="telephone">TELEPHONE</label><br>
+        <input type="text" id="telephone" name="telephone"><br>
+        <label for="password">PASSWORD</label><br>
+        <input type="text" id="password" name="password"><br>
+        <input type="submit" name="submit" value="create" style="color: green;"/>
+        <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+    </form><br>
+    {% endif %}
+    {% if show == 4 %}
+    <form action="/crud" method="POST">
+        <label for="id">ID</label><br>
+        <input type="text" id="id" name="id"><br>
+        <label for="name">NAME</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="surname">SURNAME</label><br>
+        <input type="text" id="surname" name="surname"><br>
+        <label for="telephone">TELEPHONE</label><br>
+        <input type="text" id="telephone" name="telephone"><br>
+        <label for="email">EMAIL</label><br>
+        <input type="text" id="email" name="email"><br>
+        <input type="submit" name="submit" value="execute" style="color: purple"/>
+        <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+    </form>
+        {% endif %}
+
+        {% if show == 8 %}
+        <p>Enter Id of row to be deleted</p>
+        <form action="/crud" method="POST">
+          <label for="id">ID</label><br>
+          <input type="text" id="id" name="id"><br>
+          <input type="submit" name="submit" value="delete" style="color: red;"/>
+          <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+        </form><br>
+       {% endif %}
+    {% if send == 5 %}
+    <p>Create Employee New Account</p>
+     <form action="/crud" method="POST">
+         <label for="name">NAME</label><br>
+         <input type="text" id="name" name="name"><br>
+         <label for="surname">SURNAME</label><br>
+         <input type="text" id="surname" name="surname"><br>
+         <label for="mail">EMAIL</label><br>
+         <input type="text" id="mail" name="mail"><br>
+         <label for="address">ADDRESS</label><br>
+         <input type="text" id="address" name="address"><br>
+         <label for="saloon">SALOON</label><br>
+         <input type="text" id="saloon" name="saloon"><br>
+         <label for="num">TABLE NUMBER</label><br>
+         <input type="text" id="num" name="num"><br>
+         <label for="telephone">TELEPHONE</label><br>
+         <input type="text" id="telephone" name="telephone"><br>
+         <input type="submit" name="submit" value="insert" style="color: green;"/>
+         <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+     </form><br>
+     {% endif %}
+     {% if send== 7 %}
+     <form action="/crud" method="POST">
+         <label for="id">ID</label><br>
+         <input type="text" id="id" name="id"><br>
+         <label for="name">NAME</label><br>
+         <input type="text" id="name" name="name"><br>
+         <label for="surname">SURNAME</label><br>
+         <input type="text" id="surname" name="surname"><br>
+         <label for="mail">EMAIL</label><br>
+         <input type="text" id="mail" name="mail"><br>
+         <label for="address">ADDRESS</label><br>
+         <input type="text" id="address" name="address"><br>
+         <label for="saloon">SALOON</label><br>
+         <input type="text" id="saloon" name="saloon"><br>
+         <label for="num">TABLE NUMBER</label><br>
+         <input type="text" id="num" name="num"><br>
+         <label for="telephone">TELEPHONE</label><br>
+         <input type="text" id="telephone" name="telephone"><br>
+         <input type="submit" name="submit" value="update" style="color: purple"/>
+         <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+     </form>
+         {% endif %}
+ 
+         {% if send == 9 %}
+         <p>Enter Id of row to be deleted</p>
+         <form action="/crud" method="POST">
+           <label for="id">ID</label><br>
+           <input type="text" id="id" name="id"><br>
+           <input type="submit" name="submit" value="eradicate" style="color: red;"/>
+           <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+         </form><br>
+        {% endif %}
+        {% if peek == 1 %}
+        <p>Upload new hairstyle</p>
+         <form action="/load" method="post" enctype="multipart/form-data">
+            <label for="file">Upload photo</label><br>
+            <input type="file" name="file"/></br>
+             <label for="name">NAME</label><br>
+             <input type="text" id="name" name="name"><br>
+             <label for="price">PRICE</label><br>
+             <input type="text" id="price" name="price"><br>
+             <input type="submit" name="submit" value="add" style="color: green;"/>
+             <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+         </form><br>
+      {% endif %}
+   <hr>
+    <a href = '/logout'>Log out</a>
+</body>
+</html>

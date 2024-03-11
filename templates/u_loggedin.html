@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body{background-image: url("static/uimg/window.jpg");
+        -webkit-background-size: cover;
+        background-repeat: none;
+        color: white;
+        font-size: large;
+        font-style: italic;
+        font-weight: bold;}
+    th, td{color: black;}
+    </style>
+</head>
+<body>
+    <p>Hello, nice to have you back {{username}}!</p>
+    <h5>Your Personal Dairly (Notepage)</h5>
+    <form action="/u_upload" method="post" enctype="multipart/form-data">
+        <label for="title">Title</label><br>
+        <input type="text" id="title" name="title"><br>
+        <input type="file" name="file"/></br>
+        <label for="club">Club</label><br>
+        <input type="text" id="club" name="club"><br>
+        <label for="place">Place</label><br>
+        <input type="text" id="place" name="place"><br>
+        </br>
+        <input type="submit" name="submit" value="add" style="color: green;"/>
+        <input type="submit" name="submit" value="display" style="color: blue"/>
+        <input type="reset"  value="clear" style="color: red;"/>
+    </form>
+    {% if reply == 2 %}
+        <h6 style="color: green;">{{msg}}</h6>
+    {% endif %} 
+    </br>
+    <form action="/u_remove" method="POST">
+        <label for="remove">Title of memo to be removed</label><br>
+        <input type="text" id="remove" name="remove"><br>
+        <input type="submit" name="submit" value="remove" style="color: orangered;"/>
+    </form>
+    {% if reply == 4 %}
+        <h6 style="color: red;">{{msg}}</h6>
+    {% endif %} 
+    </br>
+<ul>
+    <li> <a href = '/u_profile'>PROFILE</a></b></li>
+    {% if sign  == 4 %}
+    <hr>
+    <table>
+        <tr>
+           <th style="text-align:left;">ID</th>
+           <th style="text-align:left;">NAME</th>
+           <th style="text-align:left;">SURNAME</th>
+           <th style="text-align:left;">EMAIL</th>
+           <th style="text-align:left;">COUNTRY</th>
+           <th style="text-align:left;">CITY</th>
+           <th style="text-align:left;">ADDRESS</th>
+           <th style="text-align:left;">TELEPHONE</th>
+        </tr>
+        <tr>
+            <td style="width:150px">{{profile.id}}</td>
+            <td style="width:250px">{{profile.name}}</td>
+            <td style="width:250px">{{profile.surname}}</td>
+            <td style="width:300px">{{profile.email}}</td>
+            <td style="width:250px">{{profile.country}}</td>
+            <td style="width:250px">{{profile.city}}</td>
+            <td style="width:300px">{{profile.address}}</td>
+            <td style="width:150px">{{profile.telephone}}</td>
+         </tr>
+     </table>
+     <hr>
+    <h5 style="color: blueviolet;">Account Settings</h5>
+    <form action="/crudma" method="POST">
+        <label for="id">PASSWORD</label><br>
+        <input type="text" id="pwd" name="pwd"><br>
+        <h5 style="color: orange;">ensure correct entry of password for verification</h5>
+        <label for="name">NAME</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="surname">SURNAME</label><br>
+        <input type="text" id="surname" name="surname"><br>
+        <label for="country">COUNTRY</label><br>
+        <input type="text" id="country" name="country"><br>
+        <label for="city">CITY</label><br>
+        <input type="text" id="city" name="city"><br>
+        <label for="address">ADDRESS</label><br>
+        <input type="text" id="address" name="address"><br>
+        <label for="telephone">TELEPHONE</label><br>
+        <input type="text" id="telephone" name="telephone"><br>
+    
+        <input type="submit" name="submit" value="update" style="color: green;"/>
+        <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/><br>
+    </form>
+        <hr>
+    <form action="/crudma" method="POST">
+        <h5 style="color: blueviolet;">Wish to change only password?</h5>
+        <label for="password">PASSWORD</label><br>
+        <input type="text" id="pwd" name="pwd" placeholder="new password"><br>
+        <label for="psw"></label><br>
+        <input type="text" id="psw" name="psw" placeholder="repeat password"><br>
+        <input type="submit" name="submit" value="change" style="color: purple;"/>
+    </form>
+        <hr>
+    <form action="/crudma" method="POST">
+        <h5 style="color: blueviolet;">Delete Account</h5>
+        <input type="submit" name="submit" value="erase" style="color: red;"/>
+    </form><br>
+    <hr>
+    {% endif %} 
+
+    <li><a href = '/u_display'>PERSONAL GALLERY</a></li>
+    <li><a href = '/cyba_tech'>CYBA TECH</a></li>
+    <li><a href = 'https://cybaguru.com/services/'>CYBA SERVICES</a></li>
+    <li><a href = 'https://cybaguru.com/about-us/'>ABOUT US</a></li>
+    <li><a href = 'https://cybaguru.com/register/'>CONTACT US</a></li>
+    <li><a href = '/u_logout'>LOG OUT</a></b></li>
+</ul> 
+</body>
+</html>

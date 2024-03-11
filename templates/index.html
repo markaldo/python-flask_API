@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Appointey</title>
+	<link rel="stylesheet"  href="static/css/keyframes.css">
+
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div id="branding">
+				<h1>Appointey</h1>	
+			</div>
+			<nav>
+				<ul>
+                    <li><a href="/welcome">Welcome</a></li>
+					<li class="current"><a href="about.html">Home</a></li>
+					<li><a href="https://www.salon-services.com/">Services</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<section id="showcase">
+		<div class="container">
+			<h1>Schedule your salon appointments easily</h1>
+		
+		</div>
+	</section>
+
+{% if sim == 4 %}
+       <p>{{masg}}</p>
+  {% endif %}
+    <p style="color: red;">{{ms}}</p>
+    <p><a href="/signin">Sign In</a></p>
+  {% if sign == 2 %}
+    <form action = "/login" method = "POST">
+        <p>Enter your log in details</p>
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" size="40" placeholder="e.g sluga@hotmail.com"><br>
+    </br>
+        <label for="password">Password</label><br>
+        <input type="password" id="pwd" name="pwd" size="40" placeholder="password"><br>
+    </br>
+        <input type="submit" value="Login" style="color: green;"/>
+        <input type="reset"  value="clear" style="color: red;"/>
+    </form> 
+{% endif %}
+<p><a href="/signup">Sign Up</a></p>
+
+	<section id="newsletter">
+		<div class="container">
+     <h1>Subscribe to get latest updates</h1>
+			<form>
+				<input type="email" placeholder name="Enter Email...">
+				<button type="submit" class="button2">Subscribe</button>
+			</form>
+		</div>
+	</section>
+
+  <h1>Our trusted partners</h1>
+
+  <section class="collection">
+			<div class="nested">
+	        <img src="./static/img/c19.jpeg" alt="" width="150" height="150" style="border-radius: 50%;">
+          <img src="./static/img/2.jpeg" alt="" width="150" height="150" style="border-radius: 50%;">
+          <img src="./static/img/3.jpeg" alt="" width="150" height="150" style="border-radius: 50%;">
+          <img src="./static/img/c20.jpeg" alt="" width="150" height="150" style="border-radius: 50%;">
+		</div>
+  </section>
+
+
+  <section class=" container-2">
+		 <div class="box-6">
+        <h1><em><span class ="number">1st</span> Sign up</em></h1>
+        <p>Quick sign up to the website or simply log in if you already have an account and start making your life easier by just booking with Appointey.</p>
+    </div>
+
+        <div class="box-6">
+            <h1><em><span class ="number">2nd</span> Choose hairstyle</em></h1>
+            <p>Once you log in you get to choose the type of hairstyle you want and there is a variety of options to choose from.</p>
+        </div>
+
+            <div class="box-6">
+                <h1><em><span class ="number">3rd</span>  Book an appointment</em></h1>
+                <p>And the last stage,confirm your time and date and your appointment will just be a click away.Confirm and get ready for your schedule. You are all set</p>
+            </div>
+                </section>
+ 
+{% for row in front %}
+    <div class="card">
+        <img src="static/gallery/{{row.code_name}}" alt="" style="width:100%">
+        <div class="container">
+          <h4><b>{{row.name}}</b></h4> 
+        </div>
+      </div>
+{% endfor %} 
+	 
+  <footer>
+		<p>Appointey, Copyright &copy; 2022</p>
+	</footer>
+
+</body>
+</html>

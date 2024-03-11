@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            background-image: url("static/img/clock.jpeg");
+        }
+        .details th, .details td, .details tr {
+        border-top: 1px solid rgb(126, 119, 56);
+        border-bottom: 1px solid rgb(126, 119, 56);
+        }
+.container
+{
+    width: 100%;
+    margin: auto;
+    overflow:hidden;
+    text-align: left;
+}
+input{
+  background-color: lightgrey;
+  border: none;
+  padding: 6px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 2px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+
+}
+
+.button {
+  background-color:darkgray;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.button1 {
+  background-color:darkgray;
+  border: none;
+  color: white;
+  padding: 8px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  position: absolute;
+  
+}
+</style>
+</head>
+<body>
+{% if view == 2 %}
+<h2 style="text-align: center;">Appointment Confirmation</h2>
+<h3>Details of your Hairdresser</h3>
+<table>
+    <tr>
+       <th style="text-align:left;">Name</th>
+       <th style="text-align:left;">Surname</th>
+       <th style="text-align:left;">Telephone</th>
+       <th style="text-align:left;">Email</th>
+       <th style="text-align:left;">Saloon</th>
+       <th style="text-align:left;">Address</th>
+       <th style="text-align:left;">Table_number</th>
+    </tr>
+    
+    <tr>
+        <td style="width:150px">{{emp.name}}</td>
+        <td style="width:150px">{{emp.surname}}</td>
+        <td style="width:150px">{{emp.telephone}}</td>
+        <td style="width:150px">{{emp.mail}}</td>
+        <td style="width:150px">{{emp.saloon}}</td>
+        <td style="width:150px">{{emp.address}}</td>
+        <td style="width:150px">{{emp.table_number}}</td>
+    </tr>
+ </table>
+ <div class="container">
+ <h4>Booked Date</h4>
+ <p>{{apt}}</p>
+ <p>{{msg}}</p>
+ </hr>
+ <form action="/cancel" method="POST">
+    <label for="cancel"><h4>Cancel booking</h4></label>
+    <input type="submit" name="submit" value="cancel" style="color: orangered;"/>
+</form>
+</div>
+{% endif %}
+{% if view == 3 %}
+<table>
+    <tr>
+       <th style="text-align:left;">EMPLOYEE ID</th>
+       <th style="text-align:left;">EMAIL</th>
+       <th style="text-align:left;">APPOINTMENT DATE</th>
+       <th style="text-align:left;">HAIRSTYLE</th>
+       <th style="text-align:left;">DATE POSTED</th>
+    </tr>
+{% for emp in emp %}
+    <tr>
+        <td style="width:150px">{{emp.id}}</td>
+        <td style="width:150px">{{emp.cemail}}</td>
+        <td style="width:250px">{{emp.date_booked}}</td>
+        <td style="width:150px">{{emp.style}}</td>
+        <td style="width:250px">{{emp.date_posted}}</td>
+     </tr>
+{% endfor %}
+ </table>
+ <hr>
+{% endif %}
+
+{% if sign  == 4 %}
+    <table>
+        <tr>
+           <th style="text-align:left;">NAME</th>
+           <th style="text-align:left;">SURNAME</th>
+           <th style="text-align:left;">TELEPHONE</th>
+           <th style="text-align:left;">EMAIL</th>
+           <th style="text-align:left;">DATE CREATED</th>
+        </tr>
+        <tr>
+            <td style="width:200px">{{profile.name}}</td>
+            <td style="width:200px">{{profile.surname}}</td>
+            <td style="width:200px">{{profile.telephone}}</td>
+            <td style="width:300px">{{profile.email}}</td>
+            <td style="width:250px">{{profile.date_created}}</td>  
+         </tr>
+     </table>
+     <hr>
+    {% if ms != "" %}
+    {{ms}}
+    {% endif %}
+    <h5 style="color: blueviolet;">Account Settings</h5>
+    <form action="/crud" method="POST">
+        <label for="id">PASSWORD</label><br>
+        <input type="text" id="pwd" name="pwd"><br>
+        <h5 style="color: orangered;">ensure correct entry of email and password for verification</h5>
+        <label for="name">NAME</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="surname">SURNAME</label><br>
+        <input type="text" id="surname" name="surname"><br>
+        <label for="telephone">TELEPHONE</label><br>
+        <input type="text" id="telephone" name="telephone"><br>
+        <label for="email">EMAIL</label><br>
+        <input type="text" id="email" name="email"><br>
+      
+        <input type="submit" name="submit" value="modify" style="color: white; background-color: green;"/>
+        <input type="reset"  value="clear" style="color: white; background-color: orangered"/><br>
+    </form>
+        <hr>
+        <p>{{sm}}</p>
+    <form action="/crud" method="POST">
+        <h5 style="color: blueviolet;">Wish to change only password?</h5>
+        <label for="password">PASSWORD</label><br>
+        <input type="text" id="pwd" name="pwd" placeholder="new password"><br>
+        <label for="psw"></label><br>
+        <input type="text" id="psw" name="psw" placeholder="repeat password"><br>
+        <input type="submit" name="submit" value="change" style="color: white; background-color: purple;"/>
+    </form>
+        <hr>
+    <form action="/crud" method="POST">
+        <h5 style="color: blueviolet;">Delete Account</h5>
+        <input type="submit" name="submit" value="erase" style="color: white; background-color: red;"/>
+    </form><br>
+    <hr>
+    {% endif %} 
+    <br>
+<a href = '/back' class="button">back</a>
+<a href = '/logout' class="button1">log out</a></br>
+</body>
+</html>

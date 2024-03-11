@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body{background: url("static/uimg/ocean.avif");
+       -webkit-background-size: cover;
+        background-repeat: none;
+        color: white;
+        font-size: large;
+        font-style: italic;}
+        table, th, td {
+           border: 1px solid rgb(126, 119, 56);
+        }
+     </style>
+</head>
+<body>
+   <h4 style="text-align: center;">User Accounts Table</h4>
+   <hr>
+    <table>
+        <tr>
+           <th style="text-align:left;">ID</th>
+           <th style="text-align:left;">NAME</th>
+           <th style="text-align:left;">SURNAME</th>
+           <th style="text-align:left;">EMAIL</th>
+           <th style="text-align:left;">COUNTRY</th>
+           <th style="text-align:left;">CITY</th>
+           <th style="text-align:left;">ADDRESS</th>
+           <th style="text-align:left;">TELEPHONE</th>
+           <th style="text-align:left;">FREQUENCY</th>
+        </tr>
+        {% for acc in accounts %}
+        <tr>
+         <td style="width:50px">{{acc.id}}</td>
+         <td style="width:150px">{{acc.name}}</td>
+         <td style="width:150px">{{acc.surname}}</td>
+         <td style="width:250px">{{acc.email}}</td>
+         <td style="width:150px">{{acc.country}}</td>
+         <td style="width:150px">{{acc.city}}</td>
+         <td style="width:200px">{{acc.address}}</td>
+         <td style="width:50px">{{acc.telephone}}</td>
+         <td style="width:50px">{{acc.frequency}}</td>
+      </tr>
+      {% endfor %} 
+     </table>
+     <hr>
+    <p><a style="color: orangered;">CAUTION:</a> when implementing changes, insure to enter correct table user id!</p>
+    
+    <form action="/ubuttons" method="POST">
+    <input type="submit" name="submit" value="create" style="color: green;"/>
+    <input type="submit" name="submit" value="update" style="color: purple"/>
+    <input type="submit" name="submit" value="review" style="color: blue"/>
+    <input type="submit" name="submit" value="delete" style="color: red;"/>
+    </form> 
+
+    {% if show == 2 %}
+    <form action="/crudma" method="POST">
+        <label for="name">NAME</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="surname">SURNAME</label><br>
+        <input type="text" id="surname" name="surname"><br>
+        <label for="email">EMAIL</label><br>
+        <input type="text" id="email" name="email"><br>
+        <label for="country">COUNTRY</label><br>
+        <input type="text" id="country" name="country"><br>
+        <label for="city">CITY</label><br>
+        <input type="text" id="city" name="city"><br>
+        <label for="address">ADDRESS</label><br>
+        <input type="text" id="address" name="address"><br>
+        <label for="telephone">TELEPHONE</label><br>
+        <input type="text" id="telephone" name="telephone"><br>
+        <label for="password">PASSWORD</label><br>
+        <input type="text" id="password" name="password"><br>
+
+        <input type="submit" name="submit" value="create" style="color: green;"/>
+        <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+    </form><br>
+    {% endif %}
+    {% if show == 4 %}
+    <form action="/crudma" method="POST">
+        <label for="id">ID</label><br>
+        <input type="text" id="id" name="id"><br>
+        <label for="name">NAME</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="surname">SURNAME</label><br>
+        <input type="text" id="surname" name="surname"><br>
+        <label for="email">EMAIL</label><br>
+        <input type="text" id="email" name="email"><br>
+        <label for="country">COUNTRY</label><br>
+        <input type="text" id="country" name="country"><br>
+        <label for="city">CITY</label><br>
+        <input type="text" id="city" name="city"><br>
+        <label for="address">ADDRESS</label><br>
+        <input type="text" id="address" name="address"><br>
+        <label for="telephone">TELEPHONE</label><br>
+        <input type="text" id="telephone" name="telephone"><br>
+        <input type="submit" name="submit" value="execute" style="color: purple"/>
+        <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+        {% endif %}
+
+        {% if show == 8 %}
+        <form action="/crudma" method="POST">
+          <label for="id">ID</label><br>
+          <input type="text" id="id" name="id"><br>
+          <input type="submit" name="submit" value="delete" style="color: red;"/>
+          <input type="reset"  value="clear" style="color: rgb(240, 128, 37);"/>
+        </form><br>
+       {% endif %}
+    <hr>
+    <a href = '/u_logout'>Log out</a>
+</body>
+</html>
